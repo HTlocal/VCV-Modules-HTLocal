@@ -1,0 +1,27 @@
+{
+  "slug": "htLocal",
+  "name": "htLocal",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "brand": "htLocal",
+  "author": "htLocal",
+  "authorEmail": "asd@asd.de",
+  "authorUrl": "https://sadsad.de",
+  "pluginUrl": "https://asdasdas.de/plugin",
+  "manualUrl": "https://asdasdd.de/manual",
+  "sourceUrl": "https://asdsadas.de/source",
+  "donateUrl": "",
+  "changelogUrl": "",
+  
+  "modules": [
+    {
+      "slug": "htFader",
+      "name": "htFader",
+      "description": "Fades signals in and out",
+      "tags": [
+        "Fader"
+      ]
+    }
+  ]
+  
+}
