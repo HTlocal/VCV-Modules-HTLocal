@@ -15,12 +15,12 @@
   
   "modules": [
     {
-      "slug": "htFader",
-      "name": "htFader",
-      "description": "Fades signals in and out",
-      "tags": [
-        "Fader"
-      ]
+        "slug": "htFader",
+        "name": "htFader",
+        "description": "Fades signals in and out",
+        "tags": [
+            "Fader"
+        ]
     }
   ]
   

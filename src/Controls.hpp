@@ -18,12 +18,19 @@ typedef struct
 }RECT_STRUCT;
 
 
-struct Knob_Green1_15 : RoundKnob 
+struct Hippieknob : RoundKnob 
 {
-    Knob_Green1_15() 
+    Hippieknob() 
     {
-        setSvg( APP->window->loadSvg(asset::plugin(pluginInstance, "res/mschack_Knob_Green1_15.svg")) );
-        //setSVG(SVG::load(asset::plugin(thePlugin, "res/mschack_Knob_Green1_15.svg" )));
+        setSvg( APP->window->loadSvg(asset::plugin(pluginInstance, "res/htLocal_hippieknob_orange.svg")) );
+    }
+};
+
+struct Hippieknob_big: RoundKnob
+{
+    Hippieknob_big()
+    {
+        setSvg(APP->window->loadSvg(asset::plugin(pluginInstance, "res/htLocal_hippieknob_orange-big.svg")));
     }
 };
 
@@ -35,7 +42,8 @@ struct MyPortInSmall : SvgPort
 {
     MyPortInSmall() 
     {
-        setSvg( APP->window->loadSvg(asset::plugin(pluginInstance, "res/mschack_PortIn_small.svg")) );
+        setSvg( APP->window->loadSvg(asset::plugin(pluginInstance, "res/htLocal_PortIn.svg")) );
+        shadow->opacity = 0.0f;
         //setSvg( SVG::load(asset::plugin(thePlugin, "res/mschack_PortIn_small.svg" ) ) );
         //wrap();
         //box.size = background->box.size;
@@ -50,7 +58,8 @@ struct MyPortOutSmall : SvgPort
 {
     MyPortOutSmall() 
     {
-        setSvg( APP->window->loadSvg(asset::plugin(pluginInstance, "res/mschack_PortOut_small.svg")) );
+        setSvg( APP->window->loadSvg(asset::plugin(pluginInstance, "res/htLocal_PortOut.svg")) );
+        shadow->opacity = 0.0f;
         //setSvg( SVG::load(asset::plugin(thePlugin, "res/mschack_PortOut_small.svg" ) ) );
         //background->wrap();
         //box.size = background->box.size;
@@ -139,7 +148,7 @@ struct MyLEDButton : OpaqueWidget
 		nvgFill( args.vg );
 
         if( !m_bOn )
-            nvgFillColor( args.vg, nvgRGB(0x40, 0x40, 0x40) );
+            nvgFillColor( args.vg, nvgRGB(0xd3, 0xd3, 0xd3) );
         else
             nvgFillColor( args.vg, nvgRGB( m_LEDColour.Col[ 2 ], m_LEDColour.Col[ 1 ], m_LEDColour.Col[ 0 ] ) );
 
