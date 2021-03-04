@@ -13,6 +13,10 @@ When the inputs of a channel are connected this signal is attenuated for the fad
 
 When the inputs of a channel are NOT connected the fade will be a voltage between 0-10V.
 
+### fade time parameters
+
+The first 2 knobs select the fade-in / fade-out time in seconds.
+
 ### slope parameter
 
 Sometimes when you want to bring new sounds into a mix the threshold until you hear them can be subjectively a big higher. To compensate for that you can bring in the sound a bit earlier in the fade by adjusting the slope parameter to a value between -1 and 0.
