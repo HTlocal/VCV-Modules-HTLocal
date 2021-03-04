@@ -34,6 +34,28 @@ struct Hippieknob_big: RoundKnob
     }
 };
 
+struct Hippieswitch_orange : SvgSwitch
+{
+    Hippieswitch_orange()
+    {
+        addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/htLocal_hippieswitch_orange-left.svg")));
+        addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/htLocal_hippieswitch_orange-middle.svg")));
+        addFrame(APP->window->loadSvg(asset::plugin(pluginInstance, "res/htLocal_hippieswitch_orange-right.svg")));
+        shadow->opacity = 0.0f;
+        box.size.x = 20.0f;
+        box.size.y = 20.0f;
+    }
+
+    //void onChange(const event::Change& e) override
+    //{
+    //    step();
+    //}
+
+    //void step() override
+    //{
+    //}
+};
+
 //-----------------------------------------------------
 // Procedure:   MyPortInSmall
 //

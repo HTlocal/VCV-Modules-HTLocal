@@ -21,6 +21,15 @@
         "tags": [
             "Fader"
         ]
+    },
+    {
+        "slug": "htAdder",
+        "name": "htAdder",
+        "description": "functions largely like the A-185-2 Precision CV Adder",
+        "tags": [
+            "Adder",
+            "Precision Adder"
+        ]
     }
   ]
   

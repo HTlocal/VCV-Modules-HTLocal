@@ -17,7 +17,7 @@ extern Plugin* pluginInstance;
 // Declare each Model, defined in each module source file
 // extern Model* modelMyModule;
 extern Model *modelhtFader;
-//extern Model *modelhtAdder;
+extern Model *modelhtAdder;
 
 
 void JsonDataInt( bool bTo, std::string strName, json_t *root, int *pdata, int len );

@@ -3,5 +3,6 @@
 /plugin.so
 /plugin.dylib
 /plugin.dll
+/.vs
+/gimp
 .DS_Store
-.vs
