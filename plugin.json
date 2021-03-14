@@ -2,26 +2,43 @@
   "slug": "htLocal",
   "name": "htLocal",
   "version": "1.0.0",
-  "license": "proprietary",
+  "license": "GPL-3.0-or-later",
   "brand": "htLocal",
   "author": "htLocal",
-  "authorEmail": "asd@asd.de",
-  "authorUrl": "https://sadsad.de",
-  "pluginUrl": "https://asdasdas.de/plugin",
-  "manualUrl": "https://asdasdd.de/manual",
-  "sourceUrl": "https://asdsadas.de/source",
+  "authorEmail": "local@hack-talk.info",
+  "authorUrl": "",
+  "pluginUrl": "https://github.com/HTlocal/VCV-Modules-HTLocal",
+  "manualUrl": "https://github.com/HTlocal/VCV-Modules-HTLocal",
+  "sourceUrl": "https://github.com/HTlocal/VCV-Modules-HTLocal",
   "donateUrl": "",
   "changelogUrl": "",
-  
-  "modules": [
-    {
-        "slug": "htFader",
-        "name": "htFader",
-        "description": "Fades signals in and out",
-        "tags": [
-            "Fader"
-        ]
-    }
-  ]
+
+    "modules": [
+        {
+            "slug": "htFader",
+            "name": "htFader",
+            "description": "Fades signals in and out",
+            "tags": [
+                "Fader"
+            ]
+        },
+        {
+            "slug": "htFader16",
+            "name": "htFader16",
+            "description": "Fades signals in and out",
+            "tags": [
+                "Fader"
+            ]
+        },
+        {
+            "slug": "htAdder",
+            "name": "htAdder",
+            "description": "functions largely like the A-185-2 Precision CV Adder",
+            "tags": [
+                "Adder",
+                "Precision Adder"
+            ]
+        }
+    ]
   
 }
