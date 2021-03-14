@@ -1,10 +1,10 @@
 #include "htLocal.hpp"
 
-#define nCHANNELS 8
+#define nCHANNELS 16
 #define FADE_GATE_LVL (0.01f)
 
 
-struct htFader : Module
+struct htFader16 : Module
 {
     enum ParamIds 
     {
@@ -51,7 +51,7 @@ struct htFader : Module
     bool            m_inputStateTrigger[nCHANNELS] = {};
     
 
-    htFader() {
+    htFader16() {
         config(nPARAMS, nINPUTS, nOUTPUTS, nLIGHTS);
 
         for( int i = 0; i < nCHANNELS; i++ )
@@ -69,22 +69,22 @@ struct htFader : Module
     
     struct spd_Knob : Hippieknob
     {
-        htFader* fader;
+        htFader16* fader16;
         int param;
         char strVal[ 10 ] = {};
 
         void onChange( const event::Change &e ) override
         {
-            fader = (htFader*)paramQuantity->module;
+            fader16 = (htFader16*)paramQuantity->module;
             sprintf( strVal, "[%.2f]", paramQuantity->getValue() );
-            fader->m_pTextLabel->text = strVal;
+            fader16->m_pTextLabel->text = strVal;
 		    RoundKnob::onChange( e );
 	    }
     };
 
     struct slope_Knob : Hippieknob
     {
-        htFader* fader;
+        htFader16* fader16;
         int param;
         char strVal[10] = {};
 
@@ -96,7 +96,7 @@ struct htFader : Module
 
     struct fade_pushButton : Hippieswitch_pushbutton
     {
-        htFader* fader;
+        htFader16* fader16;
     };
     
 
@@ -111,45 +111,45 @@ struct htFader : Module
 };
 
 
-htFader g_Fader_Browser;
+htFader16 g_Fader16_Browser;
 
-struct htFader_Widget : ModuleWidget
+struct htFader16_Widget : ModuleWidget
 {
-    htFader_Widget(htFader *module )
+    htFader16_Widget(htFader16 *module )
     {
-        htFader *pmod;
+        htFader16 *pmod;
         setModule(module);
         if( !module )
-            pmod = &g_Fader_Browser;
+            pmod = &g_Fader16_Browser;
         else
             pmod = module;
-        setPanel(APP->window->loadSvg(asset::plugin( pluginInstance, "res/htFader8.svg")));
+        setPanel(APP->window->loadSvg(asset::plugin( pluginInstance, "res/htFader16.svg")));
         pmod->m_pTextLabel = new Label();
-        pmod->m_pTextLabel->box.pos = Vec( 105, 93 );
+        pmod->m_pTextLabel->box.pos = Vec( 105, 50 );
         pmod->m_pTextLabel->color = nvgRGB(0, 0, 0);
         pmod->m_pTextLabel->text = "----";
 	    addChild( pmod->m_pTextLabel );
         
         int x = 3;
-        int y = 120;
+        int y = 72;
         for( int ch = 0; ch < nCHANNELS; ch++ )
 	    {
             // inputs
-            addInput(createInput<MyPortInSmall>( Vec( x + 8.0f, y ), module, htFader::IN_AUDIOL + ch ) );
-		    addInput(createInput<MyPortInSmall>( Vec( x + 28.5f, y ), module, htFader::IN_AUDIOR + ch ) );
+            addInput(createInput<MyPortInSmall>( Vec( x + 8.0f, y ), module, htFader16::IN_AUDIOL + ch ) );
+		    addInput(createInput<MyPortInSmall>( Vec( x + 28.5f, y ), module, htFader16::IN_AUDIOR + ch ) );
             // trigger input
-            addInput(createInput<MyPortInSmall>( Vec( x + 63.5f, y ), module, htFader::IN_TRIGS + ch ) );
+            addInput(createInput<MyPortInSmall>( Vec( x + 63.5f, y ), module, htFader16::IN_TRIGS + ch ) );
             // trigger button
-            addParam(createParam <htFader::fade_pushButton>(Vec(x + 81.5f, y + 4), module, htFader::PARAM_TRIG_BUTTON + ch ));
+            addParam(createParam <htFader16::fade_pushButton>(Vec(x + 81.5f, y + 4), module, htFader16::PARAM_TRIG_BUTTON + ch ));
             // speed knobs
-            addParam(createParam<htFader::spd_Knob>( Vec( x + 114, y ), module, htFader::PARAM_SPEED_IN + ch  ) );
-            addParam(createParam<htFader::spd_Knob>( Vec( x + 130, y ), module, htFader::PARAM_SPEED_OUT + ch ) );
+            addParam(createParam<htFader16::spd_Knob>( Vec( x + 114, y ), module, htFader16::PARAM_SPEED_IN + ch  ) );
+            addParam(createParam<htFader16::spd_Knob>( Vec( x + 130, y ), module, htFader16::PARAM_SPEED_OUT + ch ) );
             // curve parameter
-            addParam(createParam<htFader::slope_Knob>(Vec(x + 167, y), module, htFader::PARAM_CURVE_V + ch));
+            addParam(createParam<htFader16::slope_Knob>(Vec(x + 167, y), module, htFader16::PARAM_CURVE_V + ch));
             // outputs
-            addOutput(createOutput<MyPortOutSmall>( Vec( x + 204, y ), module, htFader::OUT_AUDIOL + ch ) );
-            addOutput(createOutput<MyPortOutSmall>( Vec( x + 225, y ), module, htFader::OUT_AUDIOR + ch ) );
-            y += 23;
+            addOutput(createOutput<MyPortOutSmall>( Vec( x + 204, y ), module, htFader16::OUT_AUDIOL + ch ) );
+            addOutput(createOutput<MyPortOutSmall>( Vec( x + 225, y ), module, htFader16::OUT_AUDIOR + ch ) );
+            y += 18;
         }
         addChild(createWidget<ScrewSilver>(Vec(15, 0)));
 	    addChild(createWidget<ScrewSilver>(Vec(box.size.x-30, 0)));
@@ -164,19 +164,19 @@ struct htFader_Widget : ModuleWidget
     }
 };
 
-bool htFader::processFade( int ch, bool bfin, float sampleRate, float sampleTime )
+bool htFader16::processFade( int ch, bool bfin, float sampleRate, float sampleTime )
 {
     float x;
     float v = params[PARAM_CURVE_V + ch].getValue();
 
-    if( bfin ) {
-		x = m_fPos[ ch ];
-		m_fFade[ ch ] = simd::exp(v * (x - 1.0f)) * x;
+    if (bfin) {
+        x = m_fPos[ch];
+        m_fFade[ch] = simd::exp(v * (x - 1.0f)) * x;
     }
     else {
-		x = m_fPos[ ch ];
-		m_fFade[ ch ] = simd::exp( (v * -1.0f) * x) * (1.0f - x);
-	}
+        x = m_fPos[ch];
+        m_fFade[ch] = simd::exp((v * -1.0f) * x) * (1.0f - x);
+    }
 
     m_fPos[ch] += (sampleTime / params[PARAM_SPEED_IN + ch].getValue());
     if (m_fPos[ch] >= 1.f)
@@ -186,7 +186,7 @@ bool htFader::processFade( int ch, bool bfin, float sampleRate, float sampleTime
 }
 
 
-void htFader::process(const ProcessArgs &args)
+void htFader16::process(const ProcessArgs &args)
 {
 	if( !m_bInitialized )
 		return;
@@ -290,7 +290,7 @@ void htFader::process(const ProcessArgs &args)
 // Procedure: JsonParams  
 //
 //-----------------------------------------------------
-void htFader::JsonParams( bool bTo, bool bIst, json_t *root)
+void htFader16::JsonParams( bool bTo, bool bIst, json_t *root)
 {
     JsonDataInt( bTo, "m_State", root, m_State, nCHANNELS );
     JsonDataBool(bIst, "m_inputStateTrigger", root, m_inputStateTrigger, nCHANNELS);
@@ -300,7 +300,7 @@ void htFader::JsonParams( bool bTo, bool bIst, json_t *root)
 // Procedure: toJson  
 //
 //-----------------------------------------------------
-json_t *htFader::dataToJson()
+json_t *htFader16::dataToJson()
 {
 	json_t *root = json_object();
 
@@ -316,7 +316,7 @@ json_t *htFader::dataToJson()
 // Procedure:   fromJson
 //
 //-----------------------------------------------------
-void htFader::dataFromJson( json_t *root )
+void htFader16::dataFromJson( json_t *root )
 {
     JsonParams( FROMJSON, FROMJSON, root );
 
@@ -342,7 +342,7 @@ void htFader::dataFromJson( json_t *root )
 // Procedure:   onReset
 //
 //-----------------------------------------------------
-void htFader::onReset()
+void htFader16::onReset()
 {
 }
 
@@ -350,8 +350,8 @@ void htFader::onReset()
 // Procedure:   onRandomize
 //
 //-----------------------------------------------------
-void htFader::onRandomize()
+void htFader16::onRandomize()
 {
 }
 
-Model *modelhtFader = createModel<htFader, htFader_Widget>( "htFader" );
+Model *modelhtFader16 = createModel<htFader16, htFader16_Widget>( "htFader16" );

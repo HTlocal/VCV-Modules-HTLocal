@@ -7,7 +7,8 @@ Plugin* pluginInstance;
 void init(Plugin* p) {
 	pluginInstance = p;
 
-	p->addModel( modelhtFader );
+    p->addModel(modelhtFader);
+    p->addModel(modelhtFader16);
     p->addModel( modelhtAdder );
 
 	// Any other plugin initialization may go here.

@@ -38,7 +38,7 @@ struct htAdder : Module
         config(nPARAMS, nINPUTS, nOUTPUTS, nLIGHTS);
         
         // attenuator knob
-        configParam(PARAM_ATTENUATE, 0.05f, 9.99f, 9.99f, "Attenuate Input 1");
+        configParam(PARAM_ATTENUATE, 0.f, 1.f, 1.f, "Attenuate Input 1");
 
         // mode switches 
         for (int ch = 0; ch < nCHANNELS; ch++)
@@ -103,7 +103,7 @@ struct htAdder_Widget : ModuleWidget
         // draw all the components with a loop
         int y = 145.0f;
         int x = 13.0f;
-        int x_switches = 75.0f;
+        int x_switches = 47.9f;
 
         // inputs, CV and mode switches
         for (int ch = 0; ch < nCHANNELS; ch++)
@@ -111,9 +111,9 @@ struct htAdder_Widget : ModuleWidget
             // input CVs
             addInput(createInput<MyPortInSmall>(Vec(x, y), module, htAdder::IN_SIGNAL + ch ));
             // switches for adding / subtract / bypass
-            addParam(createParam<htAdder::modeSwitch>(Vec(x_switches-2.5f, y), module, htAdder::PARAM_ADDER_MODE + ch));
+            addParam(createParam<htAdder::modeSwitch>(Vec(x_switches, y), module, htAdder::PARAM_ADDER_MODE + ch));
             // CVs for mode switches
-            addInput(createInput<MyPortInSmall>(Vec(43.2f, y), module, htAdder::IN_MODE_CV + ch));
+            addInput(createInput<MyPortInSmall>(Vec(79.2f, y), module, htAdder::IN_MODE_CV + ch));
             y += 30.1f;
         }
 
@@ -123,6 +123,12 @@ struct htAdder_Widget : ModuleWidget
         // outputs
         addOutput(createOutput<MyPortOutSmall>(Vec(74.0f, 322.0f), module, htAdder::OUT_AUDIOL));
         addOutput(createOutput<MyPortOutSmall>(Vec(74.0f, 343.0f), module, htAdder::OUT_AUDIOR));
+
+        // screws
+        addChild(createWidget<ScrewSilver>(Vec(0, 0)));
+        addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 0)));
+        addChild(createWidget<ScrewSilver>(Vec(0, 365)));
+        addChild(createWidget<ScrewSilver>(Vec(box.size.x - 15, 365)));
 
         if (module)
         {
@@ -163,14 +169,14 @@ void htAdder::process(const ProcessArgs& args)
                 if (inputs[IN_SIGNAL + ch].isConnected())
                 {
                     if (params[PARAM_ADDER_MODE + ch].value != 0)
-                        htPitch = (inputs[IN_SIGNAL + ch].value) + 1.0f * params[PARAM_ADDER_MODE + ch].value * (params[PARAM_ATTENUATE].value / 10);
+                        htPitch = (inputs[IN_SIGNAL + ch].value) + 1.0f * params[PARAM_ADDER_MODE + ch].value * (params[PARAM_ATTENUATE].value);
                     else
                         htPitch = inputs[IN_SIGNAL + ch].value;
                 }
                 // if there is no input the pitch will be a scaled value of up to +/-1V
                 else
                     if (params[PARAM_ADDER_MODE + ch].value != 0)
-                        htPitch = 1.0f * params[PARAM_ADDER_MODE + ch].value * (params[PARAM_ATTENUATE].value / 10);
+                        htPitch = 1.0f * params[PARAM_ADDER_MODE + ch].value * (params[PARAM_ATTENUATE].value);
             }
             else
             {
