@@ -12,6 +12,12 @@ The fader is used to bring an audio signal in or out, or can alternatively also 
 Based on a standard exponential function, the slope parameter can be used to adjust the characteristics of the fade. <br>
 The fades can be triggered with an LED button or via trigger-in.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ### inputs
 
 When the inputs of a channel are connected the signal is used for the fades. <br>
