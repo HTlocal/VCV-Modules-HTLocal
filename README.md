@@ -2,12 +2,23 @@
 
 ## htFader
 
-The fader allows you to precisely time a fade-in or fade out. Depending on the signal or the mix the slope can be adjusted per channel.
+<img src="res/htFader-ui.png" width="168" height="250" align="left">
+
+The fader is used to bring an audio signal in or out, or can alternatively also be used as CV. <br>
+Based on a standard exponential function, the slope parameter can be used to adjust the characteristics of the fade. <br>
 The fades can be triggered with an LED button or via trigger-in.
 
-### inputs connected
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+### inputs
 
-When the inputs of a channel are connected this signal is attenuated for the fade modes and sent to the outputs.
+When the inputs of a channel are connected the signal is used for the fades. <br>
+If only one input is connected only the corresponding output will be active.
 
 ### only outputs
 
