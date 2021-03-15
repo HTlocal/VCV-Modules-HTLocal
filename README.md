@@ -1,8 +1,8 @@
 # VCV-Modules-HTLocal
 
 Modules
-* [htFader / htFader-16](##htFader)
-* [htAdder](##htAdder)
+* [htFader / htFader-16](#htFader)
+* [htAdder](#htAdder)
 
 ## htFader
 
