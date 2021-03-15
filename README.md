@@ -1,6 +1,10 @@
 # VCV-Modules-HTLocal
 
-## htFader / htFader-16
+Modules
+* [htFader / htFader-16](##htFader)
+* [htAdder](##htAdder)
+
+## htFader
 
 <img src="res/htFader-ui.png" width="168" height="250" align="left">
 
@@ -42,3 +46,5 @@ A value of 0 would be linear.
 V = -1 | V = -0.7 | V = 0 | V = 1
 -------|----------|-------|------
 <img src="res/v-1.PNG" align="left" width="200" height="200"> | <img src="res/v-p7.PNG" align="left" width="200" height="200"> | <img src="res/v0.PNG" align="left" width="200" height="200"> | <img src="res/v1.PNG" align="left" width="200" height="200">
+
+## htAdder
