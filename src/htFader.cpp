@@ -221,8 +221,10 @@ void htFader::process(const ProcessArgs &args)
 
                 if (processFade(ch, false, args.sampleRate, args.sampleTime))
                 {
-                    m_fFade[ch] = 0.0f;
                     m_State[ch] = STATE_OFF;
+                    m_fFade[ch] = 0.f;
+                    outputs[OUT_AUDIOL + ch].setVoltage(0.f);
+                    outputs[OUT_AUDIOR + ch].setVoltage(0.f);
                 }
                 break;
 
@@ -275,12 +277,12 @@ void htFader::process(const ProcessArgs &args)
                 if (inputs[IN_AUDIOL + ch].isConnected())
                     outputs[OUT_AUDIOL + ch].setVoltage(inputs[IN_AUDIOL + ch].getVoltageSum() * m_fFade[ch]);
                 else
-                    outputs[OUT_AUDIOL + ch].value = CV_MAX10 * m_fFade[ch];
+                    outputs[OUT_AUDIOL + ch].setVoltage(CV_MAX10 * m_fFade[ch]);
 
                 if (inputs[IN_AUDIOR + ch].isConnected())
                     outputs[OUT_AUDIOR + ch].setVoltage(inputs[IN_AUDIOR + ch].getVoltageSum() * m_fFade[ch]);
                 else
-                    outputs[OUT_AUDIOR + ch].value = CV_MAX10 * m_fFade[ch];
+                    outputs[OUT_AUDIOR + ch].setVoltage(CV_MAX10 * m_fFade[ch]);
             }
         }
     }
