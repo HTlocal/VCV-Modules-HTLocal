@@ -10,10 +10,9 @@ Modules
 
 The fader is used to bring an audio signal in or out, or can alternatively also be used as CV. <br>
 Based on a standard exponential function, the slope parameter can be used to adjust the characteristics of the fade. <br>
-The fades can be triggered with an LED button or via trigger-in.
+The fades can be triggered with an LED button or via trigger-in. <br><br>
+Use the Fader-16 for big patches or save some CPU cycles with the 8 port version.
 
-<br>
-<br>
 <br>
 <br>
 <br>
