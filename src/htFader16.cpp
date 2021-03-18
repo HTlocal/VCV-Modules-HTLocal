@@ -223,6 +223,8 @@ void htFader16::process(const ProcessArgs &args)
                 {
                     m_fFade[ch] = 0.0f;
                     m_State[ch] = STATE_OFF;
+                    outputs[OUT_AUDIOL + ch].setVoltage(0.f);
+                    outputs[OUT_AUDIOR + ch].setVoltage(0.f);
                 }
                 break;
 
