@@ -14,7 +14,7 @@
    version="1.1"
    id="svg992"
    inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
-   sodipodi:docname="htLocal_hippieknob_15.svg">
+   sodipodi:docname="htLocal_hippieknob_orange.svg">
   <defs
      id="defs986">
     <inkscape:path-effect
@@ -152,11 +152,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="45.254834"
-     inkscape:cx="5.1772013"
-     inkscape:cy="5.6657264"
+     inkscape:zoom="22.627417"
+     inkscape:cx="9.3453799"
+     inkscape:cy="3.8584936"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer8"
+     inkscape:current-layer="layer7"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
@@ -173,7 +173,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -265,14 +265,14 @@
      inkscape:label="indicator"
      style="display:inline">
     <rect
-       style="fill:#999999;fill-opacity:1;stroke-width:0.199624"
+       style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.00006869;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect937"
        width="0.025056515"
        height="1.7781775"
        x="2"
        y="0.22251421" />
     <rect
-       style="fill:#cccccc;fill-opacity:1;stroke-width:0.199624"
+       style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.00006869;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect939"
        width="0.025056515"
        height="1.7781775"
@@ -280,7 +280,7 @@
        y="0.22251421" />
     <path
        sodipodi:type="star"
-       style="fill:#cccccc;fill-opacity:1;stroke-width:0.264583"
+       style="fill:#4d4d4d;fill-opacity:1;stroke-width:6.99291169;stroke-miterlimit:4;stroke-dasharray:none"
        id="path971"
        sodipodi:sides="3"
        sodipodi:cx="1.8727539"
@@ -298,7 +298,7 @@
        transform="matrix(0.05430766,0,-0.03091747,0.43317752,1.920214,0.09074082)" />
     <path
        sodipodi:type="star"
-       style="fill:#999999;fill-opacity:1;stroke-width:0.264583"
+       style="fill:#4d4d4d;fill-opacity:1;stroke-width:0.02713411;stroke-miterlimit:4;stroke-dasharray:none"
        id="path981"
        sodipodi:sides="3"
        sodipodi:cx="1.9040565"
