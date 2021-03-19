@@ -6,7 +6,7 @@ Modules
 
 ## htFader
 
-<img src="res/htFader-ui.png" width="168" height="250" align="left">
+<img src="res/htFader-ui.png~" width="168" height="250" align="left">
 
 The fader is used to bring an audio signal in or out, or can alternatively also be used as CV. <br>
 Based on a standard exponential function, the slope parameter can be used to adjust the characteristics of the fade. <br>
@@ -47,7 +47,7 @@ V = -1 | V = -0.7 | V = 0 | V = 1
 
 ## htAdder
 
-<img src="res/htAdder-ui.png" width="68" height="250" align="left">
+<img src="res/htAdder-ui.png~" width="68" height="250" align="left">
 
 The htAdder is an implementation of the Doepfler A-185-2 Precision CV Adder, plus the additional feature of controlling the mode switches with a CV input.<br><br>
 There are 5 CV inputs which can, depending on the mode (-/0/+) be subtracted, bypassed or added on top of each other. The resulting sequence will be sent to the output.<br>
