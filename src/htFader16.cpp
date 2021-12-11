@@ -75,6 +75,7 @@ struct htFader16 : Module
 
         void onChange( const event::Change &e ) override
         {
+            ParamQuantity* paramQuantity = getParamQuantity();
             fader16 = (htFader16*)paramQuantity->module;
             sprintf( strVal, "[%.2f]", paramQuantity->getValue() );
             fader16->m_pTextLabel->text = strVal;
@@ -172,13 +173,14 @@ bool htFader16::processFade( int ch, bool bfin, float sampleRate, float sampleTi
     if (bfin) {
         x = m_fPos[ch];
         m_fFade[ch] = simd::exp(v * (x - 1.0f)) * x;
+        m_fPos[ch] += (sampleTime / params[PARAM_SPEED_IN + ch].getValue());
     }
     else {
         x = m_fPos[ch];
         m_fFade[ch] = simd::exp((v * -1.0f) * x) * (1.0f - x);
+        m_fPos[ch] += (sampleTime / params[PARAM_SPEED_OUT + ch].getValue());
     }
 
-    m_fPos[ch] += (sampleTime / params[PARAM_SPEED_IN + ch].getValue());
     if (m_fPos[ch] >= 1.f)
         return true;
 
