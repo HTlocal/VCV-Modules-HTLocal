@@ -56,6 +56,7 @@ struct htAdder : Module
 
         void onChange(const event::Change& e) override
         {
+            ParamQuantity* paramQuantity = getParamQuantity();
             adder = (htAdder*)paramQuantity->module;
             sprintf(strVal, "[%.2f]", paramQuantity->getValue());
             adder->m_pTextLabel->text = strVal;
