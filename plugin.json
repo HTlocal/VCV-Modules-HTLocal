@@ -19,7 +19,7 @@
             "name": "htFader",
             "description": "Fades signals in and out",
             "tags": [
-                "Fader"
+                "Utility"
             ]
         },
         {
@@ -27,7 +27,7 @@
             "name": "htFader16",
             "description": "Fades signals in and out",
             "tags": [
-                "Fader"
+                "Utility"
             ]
         },
         {
@@ -35,8 +35,8 @@
             "name": "htAdder",
             "description": "functions largely like the A-185-2 Precision CV Adder",
             "tags": [
-                "Adder",
-                "Precision Adder"
+                "Hardware clone",
+                "Utility"
             ]
         }
     ]
